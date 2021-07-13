@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recipe
+from .models import Recipe, Ingredient
 
 class RecipeForm(forms.ModelForm):
     class Meta:
@@ -12,3 +12,5 @@ class RecipeForm(forms.ModelForm):
         if value < 1:
             raise forms.ValidationError("The number of servings must be greater than zero.")
         return value
+
+
