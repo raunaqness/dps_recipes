@@ -25,9 +25,9 @@ class Recipe(models.Model):
     description = models.CharField(max_length=1000, null=False, blank=False)
     ingredients = models.ManyToManyField('Ingredient')
     instructions = models.TextField()
-    preparation_time = models.DurationField()
-    cooking_time = models.DurationField()
-    image = models.ImageField(null=True, upload_to='recipe_image')
+    preparation_time = models.IntegerField()
+    cooking_time = models.IntegerField()
+    image = models.ImageField(null=True, upload_to="recipes/static")
 
     def __str__(self):
         return self.title
