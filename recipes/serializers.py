@@ -5,7 +5,6 @@ from recipes.models import Ingredient
 
 def RecipeSerializer(**kwargs):
     form_data = kwargs.get('form_data')
-    image_data = kwargs.get('image_data')
 
     # try:
     payload = dict()

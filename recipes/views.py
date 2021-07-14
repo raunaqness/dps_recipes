@@ -14,8 +14,8 @@ def create_recipe(request):
         })
     elif request.method == "POST":
         form_data = request.POST.dict()
-        image_data = request.FILES
-        success, serialized_data = RecipeSerializer(form_data=form_data, image_data=image_data)
+        image_data = request.FILES['image']
+        success, serialized_data = RecipeSerializer(form_data=form_data)
 
         recipe = Recipe(
             title=serialized_data['title'],
@@ -31,6 +31,6 @@ def create_recipe(request):
             i.save()
             recipe.ingredients.add(i)
 
-        img = request.FILES['image']
-        recipe.image = img
+        image_data.name = f"{recipe.title}_image.png"
+        recipe.image = image_data
         recipe.save()
