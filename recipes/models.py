@@ -1,8 +1,7 @@
 import uuid
+from datetime import datetime
 
 from django.db import models
-
-from django.conf import settings
 
 
 class Ingredient(models.Model):
@@ -20,14 +19,28 @@ class Recipe(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
-        editable=False)
+        editable=False
+    )
     title = models.CharField(max_length=255, null=False, blank=False)
     description = models.CharField(max_length=1000, null=False, blank=False)
     ingredients = models.ManyToManyField('Ingredient')
     instructions = models.TextField()
     preparation_time = models.IntegerField()
     cooking_time = models.IntegerField()
-    image = models.ImageField(null=True, upload_to="recipes/static")
+    image = models.ImageField(null=True, upload_to="static/images/")
+    created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+
+
+
+
+
+
+
+
+
+
+
