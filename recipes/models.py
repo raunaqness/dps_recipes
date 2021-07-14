@@ -8,7 +8,7 @@ from django.conf import settings
 class Ingredient(models.Model):
     """Ingredient to be used in a recipe"""
     name = models.CharField(max_length=255)
-    quantity = models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
+    quantity = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
 
     def __str__(self):
         return self.name

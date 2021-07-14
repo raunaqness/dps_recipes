@@ -69,10 +69,16 @@ function formSubmit(){
         cache: false,
         enctype: "multipart/form-data",
         dataType: "json",
-        success: function(msg) {
-            if (msg.success){
-              window.location.href = msg.redirect;
+        success: function(data) {
+            console.log(data)
+            if (data.success){
+              window.location.href = data.redirect;
+            } else {
+                alert(data.message)
             }
+        },
+        error: function(data){
+            console.log(data);
         }
     });
 }
