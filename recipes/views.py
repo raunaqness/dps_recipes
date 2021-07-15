@@ -1,4 +1,5 @@
 import pdb
+import base64
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from .forms import RecipeForm
@@ -41,8 +42,8 @@ def create_recipe(request):
                 i.save()
                 recipe.ingredients.add(i)
 
-            image_data.name = f"{recipe.title}_image.png"
-            recipe.image = image_data
+            b64_image = str(base64.b64encode(image_data.read()))[2:-1]
+            recipe.image = b64_image
             recipe.save()
 
             response = {

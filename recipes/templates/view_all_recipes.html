@@ -9,7 +9,7 @@
     {% for recipe in recipes %}
         <a href="/recipe/{{recipe.id}}">
             <div class="card mb-3">
-                <img class="card-img-top" src="/{{recipe.image}}" alt="Card image cap" 
+                <img class="card-img-top" src="data:image/png;base64, {{recipe.image}}" alt="Card image cap" 
                 style="height: 200px; object-fit: contain;">
                 <div class="card-body">
                     <h5 class="card-title">{{recipe.title}}</h5>

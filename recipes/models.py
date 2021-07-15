@@ -27,8 +27,10 @@ class Recipe(models.Model):
     instructions = models.TextField()
     preparation_time = models.IntegerField()
     cooking_time = models.IntegerField()
-    image = models.ImageField(null=True, upload_to="static/images/")
+    image = models.TextField(null=True, editable=False)
     created_at = models.DateTimeField(auto_now=True)
+
+    exclude = ('image',)
 
     def __str__(self):
         return self.title
