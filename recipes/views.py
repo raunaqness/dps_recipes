@@ -48,7 +48,7 @@ def create_recipe(request):
             response = {
                 "success": True,
                 "message": "Failed to Create Recipe",
-                "redirect": "/recipes/1"
+                "redirect": "/"
             }
             return JsonResponse(response, status=201)
         except:
@@ -59,15 +59,9 @@ def create_recipe(request):
             return HttpResponse(response, status=500)
 
 
-def get_all_recipes(request, page: int):
+def get_all_recipes(request):
     if request.method == "GET":
-
-        chunk = 10
-        start_index = (page-1) * chunk
-        end_index = page * chunk
-
-        recipes = Recipe.objects.all().order_by('-created_at')[start_index:end_index]
-
+        recipes = Recipe.objects.all().order_by('-created_at')
         context = {
             'recipes': recipes
         }
@@ -82,26 +76,3 @@ def get_recipe_by_id(request, id: int):
             'recipe': recipe
         }
         return render(request, template_name="view_recipe.html", context=context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

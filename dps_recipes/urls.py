@@ -21,6 +21,6 @@ from recipes.views import create_recipe, get_all_recipes, get_recipe_by_id
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('recipe/<str:id>', get_recipe_by_id, name="get_recipe_by_id"),
-    path('recipes/<int:page>', get_all_recipes, name="get_all_recipes"),
+    path('', get_all_recipes, name="get_all_recipes"),
     path('recipes/create', create_recipe, name="create_recipe"),
 ]
