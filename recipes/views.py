@@ -75,6 +75,16 @@ def get_all_recipes(request, page: int):
         return render(request, template_name="view_all_recipes.html", context=context)
 
 
+def get_recipe_by_id(request, id: int):
+    if request.method == "GET":
+        recipe = Recipe.objects.filter(id=id).first()
+        context = {
+            'recipe': recipe
+        }
+        return render(request, template_name="view_recipe.html", context=context)
+
+
+
 
 
 

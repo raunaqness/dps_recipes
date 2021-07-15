@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from recipes.views import create_recipe, get_all_recipes
+from recipes.views import create_recipe, get_all_recipes, get_recipe_by_id
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('recipes/<int:page>/', get_all_recipes, name="get_all_recipes"),
-    path('recipes/create/', create_recipe, name="create_recipe"),
+    path('recipe/<str:id>', get_recipe_by_id, name="get_recipe_by_id"),
+    path('recipes/<int:page>', get_all_recipes, name="get_all_recipes"),
+    path('recipes/create', create_recipe, name="create_recipe"),
 ]

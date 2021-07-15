@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<div class="title" style="text-align: center;">
+  <h1> Recipe Page </h1>
+</div>
+
+{% if recipe %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/{{recipe.image}}" class="img-thumbnail" alt="Responsive image">
+                <h1> {{recipe.title}} </h1> 
+                <p>
+                    {{recipe.description}}
+                </p>
+                <hr/>
+                <div style="margin: 10px 0px;">
+                    <div><b>Cooking Time: {{recipe.cooking_time}} mins </b></div>
+                    <div><b>Preparation Time: {{recipe.preparation_time}} mins </b> </div>
+                </div>
+                
+                <div>
+                    <h5>Ingredients</h5>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity (units)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ingredient in recipe.ingredients.all%}
+                            <tr>
+                                <td>{{ingredient.name}}</td>
+                                <td>{{ingredient.quantity}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <hr/>
+                <h5>Instructions</h5>
+                <p>
+                    {{recipe.instructions}}
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+{% else %}
+    No recipe found.
+{% endif %}
+
+
+{% endblock %}

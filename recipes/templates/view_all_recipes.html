@@ -7,16 +7,18 @@
 
 {% if recipes %}
     {% for recipe in recipes %}
-        <div class="card mb-3">
-            <img class="card-img-top" src="/{{recipe.image}}" alt="Card image cap" 
-            style="height: 200px; object-fit: fill;">
-            <div class="card-body">
-                <h5 class="card-title">{{recipe.title}}</h5>
-                <p class="card-text">{{recipe.description}}</p>
-                <p class="card-text"><small class="text-muted">Preparation Time: {{recipe.preparation_time}} mins</small></p>
-                <p class="card-text"><small class="text-muted">Cooking Time: {{recipe.cooking_time}} mins</small></p>
+        <a href="/recipe/{{recipe.id}}">
+            <div class="card mb-3">
+                <img class="card-img-top" src="/{{recipe.image}}" alt="Card image cap" 
+                style="height: 200px; object-fit: fill;">
+                <div class="card-body">
+                    <h5 class="card-title">{{recipe.title}}</h5>
+                    <p class="card-text">{{recipe.description}}</p>
+                    <p class="card-text"><small class="text-muted">Preparation Time: {{recipe.preparation_time}} mins</small></p>
+                    <p class="card-text"><small class="text-muted">Cooking Time: {{recipe.cooking_time}} mins</small></p>
+                </div>
             </div>
-        </div>
+        </a>
     {% endfor %}
 {% else %}
     No recipes.
