@@ -34,7 +34,6 @@ def create_recipe(request):
                 cooking_time=serialized_data['cooking_time'],
                 preparation_time=serialized_data['cooking_time'],
             )
-            pdb.set_trace()
             recipe.save()
 
             for n, q in serialized_data['ingredients']:
@@ -49,7 +48,7 @@ def create_recipe(request):
             response = {
                 "success": True,
                 "message": "Failed to Create Recipe",
-                "redirect": "/recipes/1/"
+                "redirect": "/recipes/1"
             }
             return JsonResponse(response, status=201)
         except:
@@ -78,6 +77,7 @@ def get_all_recipes(request, page: int):
 def get_recipe_by_id(request, id: int):
     if request.method == "GET":
         recipe = Recipe.objects.filter(id=id).first()
+        recipe.instructions = recipe.instructions.replace('\n', '<br>')
         context = {
             'recipe': recipe
         }
